@@ -1,0 +1,42 @@
+.navbar {
+  margin-top: -16px;
+  .navbarContactBox {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+    background-color: rgb(36, 37, 42);
+    height: 60px;
+    font-weight: 500;
+    color: #f0f0f0;
+    .navbarContact {
+      margin-right: 30px;
+    }
+    .navbarContactBtn {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+    .brandItem {
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      margin-right: 16px;
+      font-size: 16px;
+      padding: 5px;
+
+      img {
+        margin-right: 10px;
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+}
