@@ -33,9 +33,10 @@
       .shopImg {
         width: 245px;
         height: 260px;
+        cursor: pointer;
         &:hover {
           transform: scale(1.1);
-          transform: transform 4s;
+          transition: transform 3s ease-out;
         }
       }
     }

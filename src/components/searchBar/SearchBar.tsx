@@ -2,7 +2,7 @@ import styles from "./SearchBar.module.scss";
 import React from "react";
 import * as BiIcons from "react-icons/bi";
 import { useState, useEffect } from "react";
-
+import { itemsShope } from "../../Itmes/product";
 interface ItemShope {
   id: number;
   name: string;
@@ -13,13 +13,10 @@ interface ItemShope {
   star: number;
 }
 
-const SearchBar = ({ productItem, getDataFillers }: any) => {
+const SearchBar = ({ getDataFillers }: any) => {
   const [keyword, setKeyword] = useState("");
-  const [productItems, setProductItems] =
-    useState<Array<ItemShope>>(productItem);
 
   useEffect(() => {
-    setProductItems(filteredProduct);
     console.log(keyword);
     console.log(filteredProduct);
     SendDataToHome();
@@ -27,7 +24,7 @@ const SearchBar = ({ productItem, getDataFillers }: any) => {
   }, [keyword]);
 
   const SendDataToHome = () => {
-    getDataFillers(productItems);
+    getDataFillers(filteredProduct);
   };
 
   const onChangSearchValue = (e: any) => {
@@ -35,7 +32,7 @@ const SearchBar = ({ productItem, getDataFillers }: any) => {
     setKeyword(e.target.value.toLowerCase());
   };
 
-  const filteredProduct = productItems.filter((product) =>
+  const filteredProduct = itemsShope.filter((product) =>
     product.name.toLowerCase().includes(keyword)
   );
 
