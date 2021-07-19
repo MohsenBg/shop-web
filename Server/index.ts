@@ -1,12 +1,17 @@
 import express, { Application, Request, Response } from "express";
 require("dotenv").config();
-
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const app: Application = express();
 const port = process.env.PORT;
+const ProductData = require("./models/Product");
+const ConnectionMongoDb = require("./connection/connection");
 
 // Body parsing Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+ConnectionMongoDb;
+app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({
