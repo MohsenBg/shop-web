@@ -1,3 +1,2 @@
-cd Django
-cd shop_backend
-python manage.py runserver   
+cd Server
+npm run dev
