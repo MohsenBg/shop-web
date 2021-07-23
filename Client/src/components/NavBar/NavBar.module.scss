@@ -1,6 +1,7 @@
 .navbar {
   margin-top: -16px;
   .navbarContactBox {
+    z-index: 5;
     position: relative;
     display: flex;
     flex-direction: row;

@@ -7,7 +7,6 @@ const Rating = ({ value, colors, activeColors }: any) => {
       <StarRatingComponent
         name="rate2"
         value={value}
-        editing={false}
         emptyStarColor={colors ? colors : "rgba(112, 250, 250, 0.682)"}
         starColor={activeColors ? activeColors : "rgb(12, 247, 216)"}
       />

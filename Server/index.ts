@@ -4,7 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const app: Application = express();
 const port = process.env.PORT;
-const ProductData = require("./models/Product");
+const UserData = require("./route/api/postUserData");
+const ProductData = require("./route/api/postProductData");
 const ConnectionMongoDb = require("./connection/connection");
 
 // Body parsing Middleware
@@ -12,6 +13,11 @@ const ConnectionMongoDb = require("./connection/connection");
 ConnectionMongoDb;
 app.use(bodyParser.json());
 app.use(cors());
+
+//post
+app.use("/api/postUserData", UserData);
+app.use("/api/postProductData", ProductData);
+//---------------------------------------------
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({
