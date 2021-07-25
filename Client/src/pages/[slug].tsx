@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import Rating from "../components/Rating/Rating";
 import styles from "../styles/product.module.scss";
 import * as TiIcons from "react-icons/ti";
@@ -8,6 +8,8 @@ import axios from "axios";
 import { Url } from "../Url";
 import { useDispatch } from "react-redux";
 import { ActionType } from "../Redux/AllProductData/ActionTypeAPD";
+import { store } from "../Redux/store";
+import Error from "../components/message/Error/Error";
 
 interface ItemShope {
   _id: number;
@@ -27,6 +29,7 @@ interface props {
 const slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
   const dispatch = useDispatch();
   dispatch({ type: ActionType.ON_LOADING });
+
   setTimeout(() => {
     dispatch({ type: ActionType.END_LOADING });
   }, 1000);
@@ -37,7 +40,15 @@ const slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{mainProduct.name}</title>
       </Head>
-
+      <Error
+        getValueBtn={(value: any) => console.log(value)}
+        countButton={2}
+        btn2={"exit"}
+        btn1={"try again"}
+        text={"can not connect to server please try again"}
+        icon={"error"}
+        hidden={true}
+      />
       <div className={styles.BackgroundProduct}>
         <div className={styles.filterProduct}>
           <div className={styles.productBox}>

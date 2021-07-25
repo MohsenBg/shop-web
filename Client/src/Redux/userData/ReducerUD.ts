@@ -7,7 +7,7 @@ const initialState = {
   email: "",
 };
 
-export default (state = initialState, actions: Actions) => {
+export const ReducerUD = (state = initialState, actions: Actions) => {
   switch (actions.type) {
     case ActionType.LOGIN_STATUS:
       return { ...state, loginStatus: true };

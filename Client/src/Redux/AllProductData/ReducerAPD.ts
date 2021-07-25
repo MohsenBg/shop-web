@@ -6,7 +6,7 @@ const initialState = {
   productData: [],
 };
 
-export default (state = initialState, action: Actions) => {
+export const ReducerAPD = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.FETCH_DATA:
       return { ...state };
