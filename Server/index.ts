@@ -7,6 +7,8 @@ const port = process.env.PORT;
 const UserData = require("./route/api/postUserData");
 const ProductData = require("./route/api/postProductData");
 const ConnectionMongoDb = require("./connection/connection");
+const getDataProduct = require("./route/api/getDataProduct");
+const postLogin = require("./route/api/postLogin");
 
 // Body parsing Middleware
 
@@ -17,7 +19,13 @@ app.use(cors());
 //post
 app.use("/api/postUserData", UserData);
 app.use("/api/postProductData", ProductData);
+app.use("/api/postLogin", postLogin);
+
 //---------------------------------------------
+
+//get
+app.use("/api/getDataProduct", getDataProduct);
+//----------------------------------------------
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({

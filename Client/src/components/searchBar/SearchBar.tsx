@@ -2,9 +2,11 @@ import styles from "./SearchBar.module.scss";
 import React from "react";
 import * as BiIcons from "react-icons/bi";
 import { useState, useEffect } from "react";
-import { itemsShope } from "../../Itmes/product";
+import { initialState } from "../../Redux/store";
+import { useSelector } from "react-redux";
+
 interface ItemShope {
-  id: number;
+  _id: number;
   name: string;
   slug: string;
   size: string[];
@@ -14,6 +16,9 @@ interface ItemShope {
 }
 
 const SearchBar = ({ getDataFillers }: any) => {
+  const itemsShope = useSelector(
+    (state: typeof initialState) => state.AllProductData.productData
+  );
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
@@ -32,7 +37,7 @@ const SearchBar = ({ getDataFillers }: any) => {
     setKeyword(e.target.value.toLowerCase());
   };
 
-  const filteredProduct = itemsShope.filter((product) =>
+  const filteredProduct = itemsShope.filter((product: any) =>
     product.name.toLowerCase().includes(keyword)
   );
 

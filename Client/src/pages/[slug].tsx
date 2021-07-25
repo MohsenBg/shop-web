@@ -2,11 +2,15 @@ import Head from "next/head";
 import React from "react";
 import Rating from "../components/Rating/Rating";
 import styles from "../styles/product.module.scss";
-import { itemsShope } from "../Itmes/product";
 import * as TiIcons from "react-icons/ti";
 import Link from "next/link";
+import axios from "axios";
+import { Url } from "../Url";
+import { useDispatch } from "react-redux";
+import { ActionType } from "../Redux/AllProductData/ActionTypeAPD";
+
 interface ItemShope {
-  id: number;
+  _id: number;
   name: string;
   description: string;
   slug: string;
@@ -21,12 +25,19 @@ interface props {
 }
 
 const slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
+  const dispatch = useDispatch();
+  dispatch({ type: ActionType.ON_LOADING });
+  setTimeout(() => {
+    dispatch({ type: ActionType.END_LOADING });
+  }, 1000);
+
   return (
     <div>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{mainProduct.name}</title>
       </Head>
+
       <div className={styles.BackgroundProduct}>
         <div className={styles.filterProduct}>
           <div className={styles.productBox}>
@@ -65,7 +76,7 @@ const slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
                 <h1>otherProduct</h1>
                 <div className={styles.otherProductContainer}>
                   {otherProduct.map((item) => (
-                    <div className={styles.product} key={item.id}>
+                    <div className={styles.product} key={item._id}>
                       <Link href={item.slug}>
                         <div>
                           <img
@@ -89,7 +100,9 @@ const slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = itemsShope.map((item) => ({
+  const res = await axios.get(`${Url}api/getDataProduct`);
+  const itemsShope = await res.data;
+  const paths = itemsShope.map((item: any) => ({
     params: { slug: `${item.slug}` },
   }));
   return {
@@ -99,9 +112,13 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: any) => {
-  const product = itemsShope.filter((item) => item.slug.includes(params.slug));
+  const res = await axios.get(`${Url}api/getDataProduct`);
+  const itemsShope = await res.data;
+  const product = itemsShope.filter((item: any) =>
+    item.slug.includes(params.slug)
+  );
   const otherProduct = itemsShope.filter(
-    (item) => !item.slug.includes(params.slug)
+    (item: any) => !item.slug.includes(params.slug)
   );
   return {
     props: {

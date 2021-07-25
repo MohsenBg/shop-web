@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import styles from "./Home.module.scss";
-import { itemsShope } from "../../Itmes/product";
 // @ts-ignore
 import AddCard from "../Btn/addCard/AddCard";
 import { useState } from "react";
 import SearchBar from "../searchBar/SearchBar";
 // @ts-ignore
 import Rating from "../Rating/Rating";
+import { useSelector } from "react-redux";
+import { initialState } from "../../Redux/store";
 
 const HomeComponent = () => {
-  const [ItemsShope, setItemsShope] = useState(itemsShope);
+  const itemsShope = useSelector(
+    (state: typeof initialState) => state.AllProductData.productData
+  );
+  useEffect(() => {
+    setItemsShope(itemsShope);
+  }, [itemsShope]);
 
+  const [ItemsShope, setItemsShope] = useState(itemsShope);
   const getDataFromSearchBar = (ProductsFilter: any) => {
     let newProductItems = ProductsFilter.map((item: any) => ({
       ...item,
@@ -32,9 +39,9 @@ const HomeComponent = () => {
         {ItemsShope.length < 1 ? (
           <div className="">Nothing Find try another keyword </div>
         ) : (
-          ItemsShope.map((item) => {
+          ItemsShope.map((item: any) => {
             return (
-              <div key={item.id} className={styles.shopItem}>
+              <div key={item._id} className={styles.shopItem}>
                 <Link href={`/${item.slug}`}>
                   <div className={styles.shopImgBox}>
                     <img
@@ -52,7 +59,9 @@ const HomeComponent = () => {
                   </div>
                   <p className={styles.shopSize}>
                     Size:{"  "}
-                    <span>{item.size.map((sizes) => sizes).join(", ")}</span>
+                    <span>
+                      {item.size.map((sizes: any) => sizes).join(", ")}
+                    </span>
                   </p>
                 </div>
                 <div className={styles.buttons}>
