@@ -1,11 +1,20 @@
 import { ActionType } from "./ActionTypeUD";
 
-interface loginStatus {
-  type: ActionType.LOGIN_STATUS;
+interface loginIn {
+  type: ActionType.LOGIN_IN;
 }
-export const login_Status = () => {
+export const login_In = () => {
   return {
-    type: ActionType.LOGIN_STATUS,
+    type: ActionType.LOGIN_IN,
+  };
+};
+
+interface loginOut {
+  type: ActionType.LOGIN_OUT;
+}
+export const login_Out = () => {
+  return {
+    type: ActionType.LOGIN_OUT,
   };
 };
 
@@ -23,4 +32,4 @@ export const user_Data = (userName: any, Email: any) => {
   };
 };
 
-export type Actions = userData | loginStatus;
+export type Actions = userData | loginIn | loginOut;

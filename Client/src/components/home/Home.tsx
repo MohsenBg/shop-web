@@ -9,7 +9,6 @@ import SearchBar from "../searchBar/SearchBar";
 import Rating from "../Rating/Rating";
 import { useSelector } from "react-redux";
 import { initialState } from "../../Redux/store";
-
 const HomeComponent = () => {
   const itemsShope = useSelector(
     (state: typeof initialState) => state.AllProductData.productData

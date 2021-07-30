@@ -9,6 +9,7 @@ const ProductData = require("./route/api/postProductData");
 const ConnectionMongoDb = require("./connection/connection");
 const getDataProduct = require("./route/api/getDataProduct");
 const postLogin = require("./route/api/postLogin");
+const checkQuinicName = require("./route/api/checkQuinicName");
 
 // Body parsing Middleware
 
@@ -20,7 +21,7 @@ app.use(cors());
 app.use("/api/postUserData", UserData);
 app.use("/api/postProductData", ProductData);
 app.use("/api/postLogin", postLogin);
-
+app.use("/api/checkQuinicName", checkQuinicName);
 //---------------------------------------------
 
 //get

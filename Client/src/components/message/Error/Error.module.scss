@@ -4,7 +4,6 @@
   width: 100%;
   height: 100vh;
   display: flex;
-
   justify-content: center;
   .box {
     position: relative;
@@ -16,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     .icon {
       display: flex;
       position: absolute;
@@ -30,10 +30,15 @@
       right: unset;
       left: 15px;
     }
+    .title {
+      color: yellow;
+      position: absolute;
+      top: -20px;
+    }
     .text {
-      margin-top: 30px;
+      margin-top: 40px;
       text-align: center;
-      font-size: 15px;
+
       color: #ffff;
       text-shadow: 1px 2px 3px rgb(0, 0, 0);
       width: 250px;
@@ -45,7 +50,6 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-
       .btn {
         display: flex;
         align-items: center;

@@ -1,2 +1,2 @@
 cd Client 
-npm run dev
+ yarn run dev

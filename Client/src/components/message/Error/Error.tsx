@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Error.module.scss";
-import { BiErrorAlt, BiMessageSquare } from "react-icons/bi";
+import { BiErrorAlt, BiMessageAltMinus } from "react-icons/bi";
 import { AiFillWarning } from "react-icons/ai";
 
 const Error = ({
@@ -11,6 +11,8 @@ const Error = ({
   btn2,
   getValueBtn,
   hidden,
+  title,
+  fontSize,
 }: any) => {
   const sendValueBtn = (text: any) => {
     getValueBtn(text);
@@ -33,10 +35,10 @@ const Error = ({
             ) : icon === "message" ? (
               <div>
                 <div className={styles.icon}>
-                  <BiMessageSquare />
+                  <BiMessageAltMinus />
                 </div>
                 <div className={`${styles["icon"]} ${styles["iconLeft"]}`}>
-                  <BiMessageSquare />
+                  <BiMessageAltMinus />
                 </div>
               </div>
             ) : icon === "warning" ? (
@@ -49,7 +51,13 @@ const Error = ({
                 </div>
               </div>
             ) : null}
-            <h1 className={styles.text}>{text}</h1>
+            <h1 className={styles.title}>{title}</h1>
+            <p
+              className={styles.text}
+              style={{ fontSize: fontSize ? fontSize : "16px" }}
+            >
+              {text}
+            </p>
             <div>
               {countButton == 2 ? (
                 <div className={styles.buttons}>

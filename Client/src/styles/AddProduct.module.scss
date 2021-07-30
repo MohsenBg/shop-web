@@ -11,7 +11,7 @@
     height: 800px;
   }
   width: 100%;
-  margin-top: -76px;
+
   padding: 0;
   .filterProduct {
     width: 100%;
@@ -55,6 +55,15 @@
       background-color: rgb(255, 255, 255);
       width: 600px;
       height: 400px;
+      @media (min-width: 350px) and (max-width: 620px) {
+        width: 300px;
+      }
+      @media (min-width: 820px) {
+        width: 800px;
+      }
+      @media (max-width: 350px) {
+        width: 260px;
+      }
       .allProductData {
         display: flex;
         flex-direction: row;

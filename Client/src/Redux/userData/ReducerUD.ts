@@ -9,9 +9,10 @@ const initialState = {
 
 export const ReducerUD = (state = initialState, actions: Actions) => {
   switch (actions.type) {
-    case ActionType.LOGIN_STATUS:
+    case ActionType.LOGIN_IN:
       return { ...state, loginStatus: true };
-
+    case ActionType.LOGIN_OUT:
+      return { ...state, loginStatus: false };
     case ActionType.USER_DATA:
       return { ...state, userName: actions.PayLoad1, email: actions.PayLoad2 };
 

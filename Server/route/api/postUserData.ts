@@ -16,8 +16,10 @@ router.post("/", async (req: Request, res: Response) => {
   try {
     await UserData.save();
     console.log(UserData);
+    res.send(UserData);
   } catch (err) {
     console.log(err);
+    res.send(err);
   }
 });
 
