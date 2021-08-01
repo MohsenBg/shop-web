@@ -14,6 +14,10 @@ router.post("/", async (req: Request, res: Response) => {
       res.status(200).send(err);
     }
     if (result) {
+      //@ts-ignore
+      req.session.user = result;
+      //@ts-ignore
+      console.log(req.session.user);
       res.status(200).send(result);
     }
   });

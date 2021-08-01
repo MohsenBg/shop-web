@@ -40,6 +40,6 @@ export const navItem: Array<NavItem> = [
     id: 5,
     name: "Dashboard",
     icon: AiOutlineDashboard,
-    link: "/user/Login",
+    link: "/Admin/dashboard",
   },
 ];

@@ -10,22 +10,50 @@ const ConnectionMongoDb = require("./connection/connection");
 const getDataProduct = require("./route/api/getDataProduct");
 const postLogin = require("./route/api/postLogin");
 const checkQuinicName = require("./route/api/checkQuinicName");
+const checkLogin = require("./route/api/checkLogin");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 // Body parsing Middleware
 
 ConnectionMongoDb;
-app.use(bodyParser.json());
-app.use(cors());
+app
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(
+    cors({
+      origin: ["http://localhost:3000"],
+      methods: ["GET", "POST"],
+      credentials: true,
+    })
+  )
+  .use(cookieParser())
+  .use(
+    session({
+      key: "userId",
+      secret: process.env.SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: { expires: 60 * 60 * 24 },
+    })
+  )
+  .use(bodyParser.json());
 
-//post
+//--------------------------------------
+//------------- post ---------------\\
+//signIn
 app.use("/api/postUserData", UserData);
+//addCardProduct
 app.use("/api/postProductData", ProductData);
+//login
 app.use("/api/postLogin", postLogin);
+//SingUp Check quinic userName
 app.use("/api/checkQuinicName", checkQuinicName);
 //---------------------------------------------
 
 //get
 app.use("/api/getDataProduct", getDataProduct);
+//Check userLogin or not cookie
+app.use("/api/checkLogin", checkLogin);
 //----------------------------------------------
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {

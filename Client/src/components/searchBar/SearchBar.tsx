@@ -22,8 +22,6 @@ const SearchBar = ({ getDataFillers }: any) => {
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    console.log(keyword);
-    console.log(filteredProduct);
     SendDataToHome();
     return () => {};
   }, [keyword]);
