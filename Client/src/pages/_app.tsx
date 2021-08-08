@@ -1,7 +1,7 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import React, { Dispatch } from "redux";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/NavBar/NavBar/NavBar";
 import { Provider } from "react-redux";
 import { store } from "../Redux/store";
 import { useEffect } from "react";

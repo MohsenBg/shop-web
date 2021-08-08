@@ -2,6 +2,10 @@
   position: relative;
   margin-top: -70px;
   .SideLeft {
+    z-index: 5;
     margin-top: 70px;
+  }
+  .AddProduct {
+    z-index: 4;
   }
 }

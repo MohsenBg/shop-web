@@ -2,8 +2,9 @@
 .container {
   width: 100%;
   .boxMenu {
-    position: fixed;
+    z-index: 3;
     right: 0;
+    position: fixed;
     background-color: wheat;
     width: 200px;
     height: 100vh;
@@ -14,7 +15,6 @@
       .menuBtn {
         display: flex;
         align-items: center;
-        padding-top: 8px;
         left: -30px;
         height: 50px;
         background-color: red;
@@ -31,7 +31,15 @@
           padding-left: 10px;
         }
         .arrowIcon {
+          display: flex;
           font-size: 30px;
+          transform: rotate(180deg);
+        }
+        .arrowIconOpen {
+          transform: rotate(0);
+          animation: rotateArrowClose ease-in-out 500ms;
+        }
+        .arrowIconClose {
           transform: rotate(180deg);
           animation: rotateArrowOpen ease-in-out 500ms;
         }
@@ -56,6 +64,14 @@
         }
       }
     }
+  }
+  .boxMenuOpen {
+    animation: menuOpen ease-in-out 1s;
+    right: 0px;
+  }
+  .boxMenuClose {
+    right: -200px;
+    animation: menuClose ease-in-out 1s;
   }
 }
 @keyframes hoverBtn {
@@ -84,7 +100,7 @@
   }
 }
 
-@keyframes rotateArrowOpen {
+@keyframes rotateArrowClose {
   from {
     transform: rotate(180deg);
   }
@@ -93,11 +109,29 @@
   }
 }
 
-@keyframes rotateArrowClose {
+@keyframes rotateArrowOpen {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(180deg);
+  }
+}
+
+@keyframes menuOpen {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes menuClose {
+  from {
+    right: 0;
+  }
+  to {
+    right: -200px;
   }
 }

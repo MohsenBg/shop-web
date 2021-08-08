@@ -37,7 +37,9 @@ const Login = () => {
           setTextLogin(`welcome ${response.data[0].UserName}`);
           setHiddenError(false);
           setTimeout(() => {
-            router.push("/Admin/AddProduct", undefined, { shallow: true });
+            if (!(typeof window === undefined)) {
+              router.push("/Admin/dashboard", undefined, { shallow: true });
+            }
             setTimeout(() => {
               dispatch({ type: ActionType.LOGIN_IN });
               dispatch({
@@ -136,7 +138,7 @@ const Login = () => {
                   </div>
 
                   <div className={styles.forgetPassword}>
-                    <Link href="/user/SingUp">
+                    <Link href="/user/SignUp">
                       <span>SingUp</span>
                     </Link>
                   </div>

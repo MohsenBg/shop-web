@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import styles from "../../styles/AddProduct.module.scss";
+import styles from "./AddProduct.module.scss";
 import Select from "react-select";
 import axios from "axios";
-import LoadingSmall from "../../components/Loading/smallLoading/LoadingSmall";
-import Rating from "../../components/Rating/Rating";
-import { Url } from "../../Url";
+import LoadingSmall from "../../Loading/smallLoading/LoadingSmall";
+import Rating from "../../Rating/Rating";
+import { Url } from "../../../Url";
 import * as MdIcons from "react-icons/md";
-import Question from "../../components/message/Question/Question";
-import Loading from "../../components/Loading/mainLoading/Loading";
-import { useRouter } from "next/router";
+import Question from "../../message/Question/Question";
+import Loading from "../../Loading/mainLoading/Loading";
+import router from "next/router";
 
 const options = [
   { value: "small", label: "small", id: 1 },
@@ -18,7 +18,6 @@ const options = [
 ];
 
 const AddProduct = () => {
-  const router = useRouter();
   //state
   const [loading, setLoading] = useState<any>(false);
   const [deleteQuestion, setDeleteQuestion] = useState<any>(false);
@@ -98,7 +97,9 @@ const AddProduct = () => {
       location.reload();
     } else {
       setQuestionRequest(false);
-      router.push("/", undefined, { shallow: true });
+      if (!(typeof window === undefined)) {
+        router.push("/", undefined, { shallow: true });
+      }
     }
   };
   const UploadHandler = (file: any) => {

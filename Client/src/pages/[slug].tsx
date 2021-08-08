@@ -8,7 +8,6 @@ import axios from "axios";
 import { Url } from "../Url";
 import { useDispatch } from "react-redux";
 import { ActionType } from "../Redux/AllProductData/ActionTypeAPD";
-import { store } from "../Redux/store";
 import Error from "../components/message/Error/Error";
 
 interface ItemShope {

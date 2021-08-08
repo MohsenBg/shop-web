@@ -101,13 +101,13 @@ const SignUp = () => {
           password: hash,
         })
         .then((response) => {
-          setTextError("you are successfully SingUp");
+          setTextError("you are successfully SignUp");
           setIconError("message");
           setTextBtn("login");
           setHiddenError(false);
         });
     } else {
-      setTextError("singUP failed make sure all condition check");
+      setTextError("signUp failed make sure all condition check");
       setIconError("error");
       setTextBtn("OK");
       setHiddenError(false);
@@ -119,14 +119,16 @@ const SignUp = () => {
       setHiddenError(true);
     }
     if (btn === "login") {
-      router.push("/user/Login", undefined, { shallow: true });
+      if (!(typeof window === undefined)) {
+        router.push("/user/Login", undefined, { shallow: true });
+      }
     }
   };
 
   return (
     <div className={styles.Container}>
       <Error
-        title={"SingUp"}
+        title={"SignUp"}
         text={textError}
         hidden={hiddenError}
         countButton={1}
@@ -138,7 +140,7 @@ const SignUp = () => {
         <div className={styles.fromBox}>
           <div className={styles.left}></div>
           <div className={styles.right}>
-            <h1>SingUp</h1>
+            <h1>SignUp</h1>
             <div className={styles.containerInputs}>
               <div className={styles.containerInput}>
                 <span>UserName</span>

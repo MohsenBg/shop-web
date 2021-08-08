@@ -1,2 +1,2 @@
 cd Server
- npm run dev
+ yarn run dev

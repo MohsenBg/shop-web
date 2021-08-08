@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
 import { AiOutlineAppstoreAdd, AiOutlineEdit } from "react-icons/ai";
-import AddProduct from "../pages/Admin/AddProduct";
+import AddProduct from "../components/Dashboard/AddProduct/AddProduct";
 import { GrInfo, GrAnalytics } from "react-icons/gr";
 interface item {
   id: number;
@@ -18,7 +18,7 @@ export const SideLeftDashBoard: Array<item> = [
   },
   {
     id: 2,
-    name: "editProduct",
+    name: "EditProduct",
     link: "/Admin/EditProduct",
     icon: AiOutlineEdit,
   },

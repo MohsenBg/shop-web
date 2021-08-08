@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./NavBar.module.scss";
-import { navItem } from "../../Items/NavItem";
+import { navItem } from "../../../Items/NavItem";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-import ContactBtn from "../Btn/Contact/ContactBtn";
+import ContactBtn from "../../Btn/Contact/ContactBtn";
 
 const NavBar = () => {
   const [menuStatus, setMenuStatus] = useState<any>("none");

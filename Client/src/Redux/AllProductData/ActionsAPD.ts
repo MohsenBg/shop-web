@@ -52,7 +52,10 @@ export const getDataProduct = () => {
     axios
       .get(`${Url}api/getDataProduct`)
       .then((response) => {
-        dispatch({ type: ActionType.STORE_DATA, PayLoad: response.data });
+        dispatch({
+          type: ActionType.STORE_DATA,
+          PayLoad: response.data.reverse(),
+        });
         dispatch({ type: ActionType.END_LOADING });
       })
       .catch((err) => console.log(err));
