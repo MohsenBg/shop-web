@@ -25,7 +25,7 @@ interface props {
   mainProduct: ItemShope;
 }
 
-const slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
+const Slug: React.FC<props> = ({ otherProduct, mainProduct }) => {
   const dispatch = useDispatch();
   dispatch({ type: ActionType.ON_LOADING });
 
@@ -139,4 +139,4 @@ export const getStaticProps = async ({ params }: any) => {
     },
   };
 };
-export default slug;
+export default Slug;

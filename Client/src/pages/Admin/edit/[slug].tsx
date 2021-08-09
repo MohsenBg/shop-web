@@ -33,7 +33,7 @@ const options = [
   { value: "x-large", label: "x-large", id: 4 },
 ];
 let convert: any = [];
-const slug = ({ mainProduct }: any) => {
+const SlugEdit = ({ mainProduct }: any) => {
   useEffect(() => {
     for (let i = 0; i < productSize.length; i++) {
       let filter = options.filter((item) => item.value === productSize[i]);
@@ -325,4 +325,4 @@ export const getStaticProps = async ({ params }: any) => {
     },
   };
 };
-export default slug;
+export default SlugEdit;

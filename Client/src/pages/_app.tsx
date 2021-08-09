@@ -19,20 +19,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   useEffect(() => {
-    axios.get(`${Url}api/checkLogin`).then((response) => {
-      console.log(response.data);
-      if (response.data.LoggedIn) {
-        store.dispatch({ type: ActionType.LOGIN_IN });
-        store.dispatch({
-          type: ActionType.USER_DATA,
-          PayLoad1: response.data.user[0].UserName,
-          PayLoad2: "",
-        });
-      } else {
-        return null;
-      }
-    });
-  }, []);
+    if (store.getState().userData.userName !== "") {
+      store.dispatch({ type: ActionType.LOGIN_IN });
+    }
+  });
 
   return (
     <Provider store={store}>

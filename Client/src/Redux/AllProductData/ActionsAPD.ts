@@ -1,3 +1,4 @@
+import { ActionType as ActionTypes } from "./../userData/ActionTypeUD";
 import axios from "axios";
 import { Dispatch } from "redux";
 import { Url } from "../../Url";
@@ -47,18 +48,31 @@ export const end_Loading = () => {
 };
 
 export const getDataProduct = () => {
-  return (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch) => {
     dispatch({ type: ActionType.ON_LOADING });
-    axios
+    await axios
       .get(`${Url}api/getDataProduct`)
       .then((response) => {
         dispatch({
           type: ActionType.STORE_DATA,
           PayLoad: response.data.reverse(),
         });
-        dispatch({ type: ActionType.END_LOADING });
       })
       .catch((err) => console.log(err));
+    await axios.get(`${Url}api/checkLogin`).then((response) => {
+      console.log(response.data);
+      if (response.data.LoggedIn) {
+        dispatch({ type: ActionTypes.LOGIN_IN });
+        dispatch({
+          type: ActionTypes.USER_DATA,
+          PayLoad1: response.data.user[0].UserName,
+          PayLoad2: "",
+        });
+      } else {
+        return null;
+      }
+    });
+    dispatch({ type: ActionType.END_LOADING });
   };
 };
 

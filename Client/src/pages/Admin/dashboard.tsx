@@ -4,7 +4,7 @@ import styles from "../../styles/dashboard.module.scss";
 import AddProduct from "../../components/Dashboard/AddProduct/AddProduct";
 import EditProduct from "../../components/Dashboard/EditProduct/EditProduct";
 
-const dashboard = () => {
+const Dashboard = () => {
   const [selectedComponent, setSelectedComponent] = useState("AddProduct");
   return (
     <div className={styles.container}>
@@ -22,4 +22,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default Dashboard;

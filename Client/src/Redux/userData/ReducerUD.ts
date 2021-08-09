@@ -12,7 +12,7 @@ export const ReducerUD = (state = initialState, actions: Actions) => {
     case ActionType.LOGIN_IN:
       return { ...state, loginStatus: true };
     case ActionType.LOGIN_OUT:
-      return { ...state, loginStatus: false };
+      return { ...state, loginStatus: false, userName: "", email: "" };
     case ActionType.USER_DATA:
       return { ...state, userName: actions.PayLoad1, email: actions.PayLoad2 };
 

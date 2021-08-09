@@ -4,6 +4,7 @@ import styles from "./NavBar.module.scss";
 import { navItem } from "../../../Items/NavItem";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import ContactBtn from "../../Btn/Contact/ContactBtn";
+import UserNav from "../UserNav/UserNav";
 
 const NavBar = () => {
   const [menuStatus, setMenuStatus] = useState<any>("none");
@@ -28,7 +29,7 @@ const NavBar = () => {
             <HiOutlineMenuAlt1 />
           </div>
           <div className={styles.ContactBtn}>
-            <ContactBtn />
+            <UserNav />
           </div>
         </div>
         <div

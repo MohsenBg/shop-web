@@ -41,13 +41,15 @@ const SearchBar = ({ getDataFillers }: any) => {
 
   return (
     <div className={styles.searchBarContainer}>
-      <input
-        placeholder="Search"
-        onChange={(event) => onChangSearchValue(event)}
-        className={styles.searchBar}
-      />
-      <div className={styles.iconSearch}>
-        <BiIcons.BiSearchAlt />
+      <div className={styles.mainContent}>
+        <input
+          placeholder="Search"
+          onChange={(event) => onChangSearchValue(event)}
+          className={styles.searchBar}
+        />
+        <div className={styles.iconSearch}>
+          <BiIcons.BiSearchAlt />
+        </div>
       </div>
     </div>
   );

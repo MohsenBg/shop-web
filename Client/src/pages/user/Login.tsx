@@ -36,19 +36,17 @@ const Login = () => {
           setCountBtnError(0);
           setTextLogin(`welcome ${response.data[0].UserName}`);
           setHiddenError(false);
+
+          dispatch({
+            type: ActionType.USER_DATA,
+            PayLoad01: response.data[0].UserName,
+            PayLoad02: "",
+          });
           setTimeout(() => {
             if (!(typeof window === undefined)) {
               router.push("/Admin/dashboard", undefined, { shallow: true });
             }
-            setTimeout(() => {
-              dispatch({ type: ActionType.LOGIN_IN });
-              dispatch({
-                type: ActionType.USER_DATA,
-                PayLoad01: response.data[0].UserName,
-                PayLoad02: "",
-              });
-            }, 1000);
-          }, 4000);
+          }, 2000);
         }
         if (response.data.length <= 0) {
           setIconError("error");
