@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
-import styles from "./Home.module.scss";
+import styles from "./ProductsHome.module.scss";
 // @ts-ignore
-import AddCard from "../Btn/addCard/AddCard";
+import AddCard from "../../Btn/addCard/AddCard";
 import { useState } from "react";
-import SearchBar from "../searchBar/SearchBar";
+import SearchBar from "../../searchBar/SearchBar";
 // @ts-ignore
-import Rating from "../Rating/Rating";
+import Rating from "../../Rating/Rating";
 import { useSelector } from "react-redux";
-import { initialState } from "../../Redux/store";
+import { initialState } from "../../../Redux/store";
 const HomeComponent = () => {
   const itemsShope = useSelector(
     (state: typeof initialState) => state.AllProductData.productData
@@ -17,26 +17,28 @@ const HomeComponent = () => {
     setItemsShope(itemsShope);
   }, [itemsShope]);
 
+  const ProductsFilter = useSelector(
+    (state: typeof initialState) => state.searchValue.searchValue
+  );
+
+  useEffect(() => {
+    if (ProductsFilter !== "") {
+      let newProductItems = ProductsFilter.map((item: any) => ({
+        ...item,
+      }));
+      setItemsShope(newProductItems);
+    }
+  }, [ProductsFilter]);
+
   const [ItemsShope, setItemsShope] = useState(itemsShope);
-  const getDataFromSearchBar = (ProductsFilter: any) => {
-    let newProductItems = ProductsFilter.map((item: any) => ({
-      ...item,
-    }));
-    setItemsShope(newProductItems);
-  };
 
   return (
     <>
-      <div className={styles.searchWrapper}>
-        <SearchBar
-          getDataFillers={(itemsFilter: any) =>
-            getDataFromSearchBar(itemsFilter)
-          }
-        />
-      </div>
       <div className={styles.shopContainer}>
         {ItemsShope.length < 1 ? (
-          <div className="">Nothing Find try another keyword </div>
+          <div className={styles.textNothingFind}>
+            Nothing Find try another keyword
+          </div>
         ) : (
           ItemsShope.map((item: any) => {
             return (

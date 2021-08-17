@@ -130,7 +130,7 @@ const EditProduct = () => {
                   </p>
                 </div>
                 <div className={styles.buttons}>
-                  <AddCard url={item.slug} />
+                  <AddCard url={`/${item.slug}`} />
                 </div>
               </div>
             );

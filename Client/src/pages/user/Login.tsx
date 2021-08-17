@@ -32,20 +32,18 @@ const Login = () => {
       })
       .then((response) => {
         if (response.data.length > 0) {
-          setIconError("message");
-          setCountBtnError(0);
-          setTextLogin(`welcome ${response.data[0].UserName}`);
-          setHiddenError(false);
-
           dispatch({
             type: ActionType.USER_DATA,
             PayLoad01: response.data[0].UserName,
             PayLoad02: "",
           });
+          setIconError("message");
+          setCountBtnError(0);
+          setTextLogin(`welcome ${response.data[0].UserName}`);
+          setHiddenError(false);
+
           setTimeout(() => {
-            if (!(typeof window === undefined)) {
-              router.push("/Admin/dashboard", undefined, { shallow: true });
-            }
+            router.push("/Admin/dashboard", undefined, { shallow: true });
           }, 2000);
         }
         if (response.data.length <= 0) {
@@ -75,6 +73,7 @@ const Login = () => {
         ) : (
           <>
             <Error
+              _zIndex={4}
               title={"login"}
               text={textLogin}
               hidden={hiddenError}

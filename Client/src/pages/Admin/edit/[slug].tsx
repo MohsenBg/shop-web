@@ -124,15 +124,20 @@ const SlugEdit = ({ mainProduct }: any) => {
   };
   const UploadHandler = (file: any) => {
     const formData: any = new FormData();
-    formData.append("file", file[0]);
-    formData.append("upload_preset", "vptapsh2");
-    setLoading(true);
-    axios
-      .post("https://api.cloudinary.com/v1_1/dozkb26zl/image/upload", formData)
-      .then((response) => {
-        setFileUrl(response.data.url);
-        setLoading(false);
-      });
+    if (file[0].size < 500000) {
+      formData.append("file", file[0]);
+      formData.append("upload_preset", "vptapsh2");
+      setLoading(true);
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/dozkb26zl/image/upload",
+          formData
+        )
+        .then((response) => {
+          setFileUrl(response.data.url);
+          setLoading(false);
+        });
+    }
   };
   const handelSize = (Size: any) => {
     console.log("====================================");
@@ -149,7 +154,7 @@ const SlugEdit = ({ mainProduct }: any) => {
             <Loading />
           </div>
         ) : null}
-        <h1 className={styles.titleAddProduct}>Add Product</h1>
+        <h1 className={styles.titleAddProduct}>Edit Product</h1>
 
         {questionRequest ? (
           <div className={styles.Question}>
@@ -202,6 +207,7 @@ const SlugEdit = ({ mainProduct }: any) => {
                       <input
                         className={styles.inputUpload}
                         type="file"
+                        accept="image/*"
                         onChange={(e) => UploadHandler(e.target.files)}
                       />
                       <h3> Click here to Upload Image Product</h3>

@@ -19,11 +19,8 @@
     );
     filter: blur(50%);
     display: grid;
-    padding-top: 76px;
     place-items: center;
-    @media (min-width: 240px) and (max-width: 700px) {
-      padding-top: 76px;
-    }
+
     .productBox {
       display: flex;
       background-color: white;

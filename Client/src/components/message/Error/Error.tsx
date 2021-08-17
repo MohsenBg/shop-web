@@ -13,15 +13,18 @@ const Error = ({
   hidden,
   title,
   fontSize,
+  _zIndex,
 }: any) => {
   const sendValueBtn = (text: any) => {
     getValueBtn(text);
   };
-
+  if (isNaN(_zIndex)) {
+    _zIndex = 10;
+  }
   return (
     <>
       {hidden ? null : (
-        <div className={styles.container}>
+        <div className={styles.container} style={{ zIndex: _zIndex }}>
           <div className={styles.box}>
             {icon === "error" ? (
               <div>

@@ -47,10 +47,10 @@ const UserNav = () => {
               </div>
             ) : (
               <div className={styles.options}>
-                <Link href="user/Login">
+                <Link href="/user/Login">
                   <div className={styles.option}>Login</div>
                 </Link>
-                <Link href="user/SingUp">
+                <Link href="/user/SignUp">
                   <div className={styles.option}>signUp</div>
                 </Link>
               </div>

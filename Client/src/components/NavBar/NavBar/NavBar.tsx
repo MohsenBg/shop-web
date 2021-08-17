@@ -5,6 +5,7 @@ import { navItem } from "../../../Items/NavItem";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import ContactBtn from "../../Btn/Contact/ContactBtn";
 import UserNav from "../UserNav/UserNav";
+import SearchNav from "../SearchNav/SearchNav";
 
 const NavBar = () => {
   const [menuStatus, setMenuStatus] = useState<any>("none");
@@ -30,6 +31,9 @@ const NavBar = () => {
           </div>
           <div className={styles.ContactBtn}>
             <UserNav />
+          </div>
+          <div className={styles.searchNav}>
+            <SearchNav />
           </div>
         </div>
         <div

@@ -27,7 +27,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Loading />
-      <NavBar />
+      <div className="NavBarM">
+        <NavBar />
+      </div>
       <Component {...pageProps} />
     </Provider>
   );

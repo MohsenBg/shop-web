@@ -1,0 +1,201 @@
+$shadow-color: #faa8a8f3;
+$shadow-color-light: rgba(255, 255, 255, 0.822);
+.container {
+  margin-top: 3.5em;
+  height: 600px;
+  .mainContent {
+    width: 100%;
+    height: 600px;
+    background-color: rgb(247, 71, 71);
+    .boxContainer {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 600px;
+      overflow: hidden;
+      width: 100%;
+      .OfferImage {
+        display: flex;
+        position: absolute;
+        text-align: center;
+        top: -40px;
+        z-index: 3;
+        h1 {
+          font-size: 65px;
+          text-transform: uppercase;
+          font-family: "Archivo Black", "Archivo", sans-serif;
+          font-weight: normal;
+          display: block;
+          height: auto;
+          text-align: center;
+          color: white;
+          animation: neon 3s infinite;
+          animation-direction: alternate, reverse;
+        }
+      }
+      .OffersProduct {
+        margin-top: 80px;
+        position: relative;
+        overflow-x: scroll;
+        &::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          border-radius: 10px;
+          margin: 0 20px;
+          border: black solid 2px;
+          background-color: #f5f5f5;
+        }
+
+        &::-webkit-scrollbar {
+          height: 18px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          background-color: #7dd629;
+        }
+        display: flex;
+        align-items: center;
+        .arrowBtnLeft {
+          z-index: 3;
+          position: absolute;
+          display: flex;
+          left: 16px;
+          margin-bottom: 120px;
+          align-items: center;
+          justify-content: center;
+          font-size: 30px;
+          cursor: pointer;
+          width: 50px;
+          box-shadow: 0px 4px 16px rgba($color: #000000, $alpha: 0.6);
+          height: 80px;
+          background-color: white;
+          border-radius: 0 5px 5px 0;
+        }
+        .arrowBtnRight {
+          position: absolute;
+          z-index: 3;
+          display: flex;
+          right: 19px;
+          @media (max-width: 1080px) and (min-width: 820px) {
+            right: 22px;
+          }
+          @media (max-width: 1360px) and (min-width: 1080px) {
+            right: 25px;
+          }
+          margin-bottom: 120px;
+          align-items: center;
+          justify-content: center;
+          font-size: 30px;
+          cursor: pointer;
+          width: 50px;
+          box-shadow: 0px 4px 16px rgba($color: #000000, $alpha: 0.6);
+          height: 80px;
+          background-color: white;
+          border-radius: 5px 0px 0px 5px;
+        }
+        .ProductBoxCard {
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          margin: 1rem;
+          width: 245px;
+          height: 444px;
+          background-color: white;
+          transition: ease-in-out transport 200ms, box-shadow 200ms ease-in-out;
+          box-shadow: 0px 4px 16px rgba($color: #000000, $alpha: 0.6);
+          animation: moveOneElement 3s ease-in-out;
+          &:hover {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem;
+            transform: translateY(-4px);
+          }
+          .ProductImageCard {
+            overflow: hidden;
+            position: relative;
+            img {
+              width: 245px;
+              height: 260px;
+              cursor: pointer;
+              &:hover {
+                transform: scale(1.1);
+                transition: transform 3s ease-out;
+              }
+            }
+          }
+          .detailsCard {
+            .shopText {
+              border-top: solid 2px rgba(78, 78, 78, 0.422);
+              height: auto;
+              text-align: center;
+              color: black;
+              background: white;
+              .shopHeader {
+                font-weight: 700;
+                font-size: 20px;
+              }
+              .rating {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: -1em;
+              }
+              .shopPrice {
+                margin-top: -1em;
+              }
+              .shopSize {
+                font-size: 12px;
+              }
+            }
+          }
+          .seeMore {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 245px;
+            height: 100%;
+            h1 {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes moveOneElement {
+  from {
+    left: auto;
+  }
+  to {
+    left: 280px;
+  }
+}
+@keyframes neon {
+  0% {
+    text-shadow: -1px -1px 1px $shadow-color-light,
+      -1px 1px 1px $shadow-color-light, 1px -1px 1px $shadow-color-light,
+      1px 1px 1px $shadow-color-light, 0 0 $shadow-color-light,
+      0 0 10px $shadow-color-light, 0 0 $shadow-color-light,
+      0 0 30px $shadow-color, 0 0 40px $shadow-color, 0 0 50px $shadow-color,
+      0 0 70px $shadow-color, 0 0 100px $shadow-color, 0 0 200px $shadow-color;
+  }
+  50% {
+    text-shadow: -1px -1px 1px $shadow-color-light,
+      -1px 1px 1px $shadow-color-light, 1px -1px 1px $shadow-color-light,
+      1px 1px 1px $shadow-color-light, 0 0 5px $shadow-color-light,
+      0 0 15px $shadow-color-light, 0 0 25px $shadow-color-light,
+      0 0 40px $shadow-color, 0 0 50px $shadow-color, 0 0 60px $shadow-color,
+      0 0 80px $shadow-color, 0 0 110px $shadow-color, 0 0 210px $shadow-color;
+  }
+  100% {
+    text-shadow: -1px -1px 1px $shadow-color-light,
+      -1px 1px 1px $shadow-color-light, 1px -1px 1px $shadow-color-light,
+      1px 1px 1px $shadow-color-light, 0 0 3px $shadow-color-light,
+      0 0 10px $shadow-color-light, 0 0 20px $shadow-color-light,
+      0 0 30px $shadow-color, 0 0 40px $shadow-color, 0 0 50px $shadow-color,
+      0 0 70px $shadow-color, 0 0 100px $shadow-color, 0 0 200px $shadow-color;
+  }
+}
