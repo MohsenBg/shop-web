@@ -3,10 +3,9 @@ require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app: Application = express();
-const port = process.env.PORT;
 const UserData = require("./route/api/postUserData");
 const ProductData = require("./route/api/postProductData");
-const ConnectionMongoDb = require("./connection/connection");
+const { Connect_Mongo_DB } = require("./connection/connection");
 const getDataProduct = require("./route/api/getDataProduct");
 const postLogin = require("./route/api/postLogin");
 const checkQuinicName = require("./route/api/checkQuinicName");
@@ -16,14 +15,11 @@ const editProduct = require("./route/api/editProduct");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
-// Body parsing Middleware
-
-ConnectionMongoDb;
 app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(
     cors({
-      origin: ["http://localhost:3000","http://shop-web-eight.vercel.app"],
+      origin: [process.env.CORS],
       methods: ["GET", "POST"],
       credentials: true,
     })
@@ -32,13 +28,17 @@ app
   .use(
     session({
       key: "userId",
-      secret: process.env.SECRET,
+      secret: `${process.env.SECRET}`,
       resave: false,
       saveUninitialized: false,
       cookie: { expires: 60 * 60 * 24 },
     })
   )
   .use(bodyParser.json());
+
+//Body parsing Middleware
+Connect_Mongo_DB(app);
+//!await
 
 //--------------------------------------
 //------------- post ---------------\\
@@ -65,16 +65,8 @@ app.use("/api/editProduct", editProduct);
 //Deleted
 app.use("/api/deleteCard", deleteCard);
 
-app.get("/", async (req: Request, res: Response): Promise<Response> => {
+app.get("/", async (req, res) => {
   return res.status(200).send({
     message: "main page",
   });
 });
-
-try {
-  app.listen(port, (): void => {
-    console.log(`Connected successfully on port ${port}`);
-  });
-} catch (error) {
-  console.error(`Error occured: ${error.message}`);
-}
