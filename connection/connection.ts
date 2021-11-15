@@ -13,7 +13,7 @@ const Connect_Mongo_DB = async (app: Application) => {
     .then(() => {
       console.log("mongodb connected");
       try {
-        app.listen(process.env.PORT, (): void => {
+        app.listen(process.env.PORT || 5000, (): void => {
           console.log(`Connected successfully on port ${process.env.PORT}`);
         });
       } catch (error: any) {
