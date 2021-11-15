@@ -17,13 +17,7 @@ const session = require("express-session");
 
 app
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(
-    cors({
-      origin: [process.env.CORS],
-      methods: ["GET", "POST"],
-      credentials: true,
-    })
-  )
+  .use(cors())
   .use(cookieParser())
   .use(
     session({
