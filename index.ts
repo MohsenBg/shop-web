@@ -17,7 +17,13 @@ const session = require("express-session");
 
 app
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(cors({ origin: process.env.CORS }))
+  .use(
+    cors({
+      origin: ["https://shop-web-eight.vercel.app"],
+      methods: ["GET", "POST"],
+      credentials: true,
+    })
+  )
   .use(cookieParser())
   .use(
     session({
