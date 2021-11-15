@@ -15,6 +15,8 @@ const editProduct = require("./route/api/editProduct");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
+Connect_Mongo_DB(app);
+
 app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(cors())
@@ -31,8 +33,6 @@ app
   .use(bodyParser.json());
 
 //Body parsing Middleware
-Connect_Mongo_DB(app);
-//!await
 
 //--------------------------------------
 //------------- post ---------------\\
