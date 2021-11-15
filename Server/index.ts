@@ -23,7 +23,7 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(
     cors({
-      origin: ["http://localhost:3000"],
+      origin: ["http://localhost:3000","http://shop-web-eight.vercel.app"],
       methods: ["GET", "POST"],
       credentials: true,
     })
